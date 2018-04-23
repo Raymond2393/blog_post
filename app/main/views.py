@@ -4,7 +4,6 @@ from ..models import User, Post
 from .forms import PostForm
 from .. import db
 from flask_login import login_user, logout_user, login_required, current_user
-# from ..email import mail_message
 
 
 @main.route('/')
@@ -25,18 +24,18 @@ def index():
     return render_template('index.html', form=form, posts=posts)
 
 
-# @main.route('/user/<username>')
-# @login_required
-# def user(username):
-#     """View function that returns the homepage for a particular user when they sign in"""
-#     user = User.query.filter_by(username=username).first()
-#     if user is None:
-#         abort(404)
-#
-#     posts = user.posts.order_by(Post.timestamp.desc()).all()
-#     return render_template('user.html', user=user, posts=posts)
-#
-#
+@main.route('/user/<username>')
+@login_required
+def user(username):
+    """View function that returns the homepage for a particular user when they sign in"""
+    user = User.query.filter_by(username=username).first()
+    if user is None:
+        abort(404)
+
+    posts = user.posts.order_by(Post.timestamp.desc()).all()
+    return render_template('user.html', user=user, posts=posts)
+
+
 # @main.route('/post/<int:id>')
 # def post(id):
 #     post = Post.query.get_or_404(id)
