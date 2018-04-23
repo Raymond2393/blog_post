@@ -13,12 +13,17 @@ class Config:
     MAIL_PASSWORD = os.environ.get("MAIL_PASSWORD")
 
 class ProdConfig(Config):
-    """Production configuration class that inherits from the main configurations class"""
+    """
+    Production configuration class that inherits from the main configurations class
+    """
     SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL")
 
 
 class DevConfig(Config):
-    """Configuration class for development stage of the app"""
+    """
+    Configuration class for development stage of the app
+    """
+    
     DEBUG = True
 
 
