@@ -2,7 +2,8 @@ import os
 class Config:
     """Main configuration class"""
 
-    SQLALCHEMY_DATABASE_URI = os.environ.get("SQLALCHEMY_DATABASE_URI")
+    SQLALCHEMY_DATABASE_URI = "SQLAlchemy engine=postgresql+psycopg2://raymondokwendac:ray@localhost/blog_post"
+
     SECRET_KEY = os.environ.get("SECRET_KEY")
     UPLOADED_PHOTOS_DEST = 'app/static/photos'
     MAIL_SERVER = 'smtp.gmail.com'

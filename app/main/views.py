@@ -21,17 +21,15 @@ def index():
         post.save_post()
         return redirect(url_for('.index'))
 
-    # posts = Post.query.order_by(Post.timestamp.desc()).all()
+    posts = Post.query.order_by(Post.timestamp.desc()).all()
 
-    return render_template('index.html', form=form)
+    return render_template('index.html', form=form, posts=posts)
 
 
 @main.route('/user/<username>')
 @login_required
 def user(username):
-    """
-    View function that returns the homepage for a particular user when they sign in
-    """
+    """View function that returns the homepage for a particular user when they sign in"""
     user = User.query.filter_by(username=username).first()
     if user is None:
         abort(404)
