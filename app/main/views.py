@@ -8,7 +8,9 @@ from flask_login import login_user, logout_user, login_required, current_user
 
 @main.route('/')
 def index():
-    """View root page function that returns index page and the various news sources"""
+    """
+    View root page function that returns index page and the various news sources
+    """
 
     title = 'Home- Welcome to Blogger'
 
@@ -19,15 +21,17 @@ def index():
         post.save_post()
         return redirect(url_for('.index'))
 
-    posts = Post.query.order_by(Post.timestamp.desc()).all()
+    # posts = Post.query.order_by(Post.timestamp.desc()).all()
 
-    return render_template('index.html', form=form, posts=posts)
+    return render_template('index.html', form=form)
 
 
 @main.route('/user/<username>')
 @login_required
 def user(username):
-    """View function that returns the homepage for a particular user when they sign in"""
+    """
+    View function that returns the homepage for a particular user when they sign in
+    """
     user = User.query.filter_by(username=username).first()
     if user is None:
         abort(404)

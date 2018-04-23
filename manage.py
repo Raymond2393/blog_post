@@ -21,10 +21,10 @@ def test():
     unittest.TextTestRunner(verbosity=2).run(tests)
 #
 #
-# @manager.shell
-# def make_shell_context():
-#     return dict(app=app, db=db, User=User)
-#     pass
+@manager.shell
+def make_shell_context():
+    return dict(app=app, db=db, User=User)
+    pass
 #
 
 if __name__ == '__main__':
