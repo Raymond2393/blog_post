@@ -57,9 +57,9 @@ class Post(db.Model):
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
     author_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
-#     def save_post(self):
-#         '''
-#         Function to save a new blog.
-#         '''
-#         db.session.add(self)
-#         db.session.commit()
+    def save_post(self):
+        '''
+        Function to save a new blog.
+        '''
+        db.session.add(self)
+        db.session.commit()
